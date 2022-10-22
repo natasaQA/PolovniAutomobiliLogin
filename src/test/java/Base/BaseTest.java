@@ -29,6 +29,7 @@ public class BaseTest {
         wdwait = new WebDriverWait(driver, Duration.ofSeconds(10));
         homePage= new HomePage(driver,wdwait);
         loginPage= new LoginPage(driver,wdwait);
+        var a = 1;
     }
     @AfterClass
     public void tearDown(){
