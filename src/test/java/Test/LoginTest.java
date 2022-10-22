@@ -77,8 +77,30 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginPage.wrongPasswordTextMessage().getText().contains("Ukoliko si zaboravio šifru za logovanje, možeš je promeniti klikom na link"));
         Assert.assertTrue(loginPage.wrongPasswordTextMessage().getText().contains("Zaboravljena šifra"));
         Assert.assertTrue(loginPage.wrongPasswordTextMessage().getText().contains("Ako imaš nekih nedoumica, možeš saznati više klikom na link "));
-
+    }
+    @Test
+    public void LoginRegistrationButton() throws InterruptedException{
+        loginPage.RegistrationButton().click();
+        String URL = driver.getCurrentUrl();
+        Assert.assertEquals(URL, "https://www.polovniautomobili.com/registracija" );
+    }
+    @Test
+    public void LoginWithoutEmail() throws InterruptedException{
+        loginPage.EmailField().clear();
+        loginPage.DaljeButton().click();
+        Thread.sleep(500);
+        visibilityWait(loginPage.nonexistentAccountMessage());
+        try {
+            Assert.assertEquals(driver.getCurrentUrl(), "linkedin");
+            System.out.println("testPRoso");
+        }
+        catch (Exception e)
+        {
+            System.out.println("testPao");
+        }
 
     }
+
+
 
 }

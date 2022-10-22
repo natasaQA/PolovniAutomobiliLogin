@@ -17,6 +17,8 @@ public class LoginPage {
     private String messageId = "activation-link-sent";
     private String facebookLoginXpath = "//*[@title = 'Uloguj se pomoću svog Facebook naloga']";
     private String wrongPasswordMessageXpath = "//*[@class= 'uk-alert uk-alert-danger']";
+    private String registrationButtonXpath = "//*[@href='/registracija']";
+    private String nonexistentAccountMessagexpath = "//*[text()='Ne postoji nalog sa ovom mail adresom.']";
 
 
     public LoginPage(WebDriver driver, WebDriverWait wdwait) {
@@ -56,4 +58,11 @@ public class LoginPage {
         return driver.findElement(By.xpath(wrongPasswordMessageXpath));
     }
 
+    public WebElement RegistrationButton() {
+        return driver.findElement(By.xpath(registrationButtonXpath));
+    }
+
+    public WebElement nonexistentAccountMessage() {
+        return driver.findElement(By.xpath(nonexistentAccountMessagexpath));
+    }
 }
